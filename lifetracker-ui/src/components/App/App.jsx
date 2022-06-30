@@ -5,6 +5,9 @@ import Navbar from "components/Navbar/Navbar";
 import LandingPage from "components/LandingPage/LandingPage";
 import LoginPage from "components/LoginPage/LoginPage";
 import RegistrationPage from "components/RegistrationPage/RegistrationPage";
+import ActivityPage from "components/ActivityPage/ActivityPage";
+import NutritionPage from "components/NutritionPage/NutritionPage";
+import NotFound from "components/NotFound/NotFound";
 
 export default function App() {
   return (
@@ -45,6 +48,7 @@ export default function App() {
                 element={
                   <>
                     <Navbar />
+                    <ActivityPage />
                   </>
                 }
               />
@@ -53,6 +57,7 @@ export default function App() {
                 element={
                   <>
                     <Navbar />
+                    <NutritionPage />
                   </>
                 }
               />
@@ -61,6 +66,7 @@ export default function App() {
                 element={
                   <>
                     <Navbar />
+                    <NotFound />
                   </>
                 }
               />

@@ -1,0 +1,71 @@
+.nutrition-card {
+  width: 360px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.nc-top-row {
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+}
+
+.nutrition-image {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.aqua-gradient {
+  background: linear-gradient(64.7deg, #03c5d1, #03c5d1);
+}
+
+.nutrition-name {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.nc-mid-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.cal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.n-cal-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.nutrition-calories {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.nutrition-category {
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.nutrition-date {
+  color: #fff;
+  font-size: 16px;
+}

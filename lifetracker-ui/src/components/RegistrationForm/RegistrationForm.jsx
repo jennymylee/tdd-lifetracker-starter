@@ -148,7 +148,7 @@ export default function RegistrationForm() {
               <span className="error">{errors.passwordConfirm}</span>
             )}
           </div>
-          <button className="submit-login" onClick={() => {}}>
+          <button className="submit-registration" onClick={() => {}}>
             Create Account
           </button>
         </div>
