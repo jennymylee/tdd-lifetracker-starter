@@ -9,8 +9,8 @@ class User {
       id: user.id,
       email: user.email,
       username: user.username,
-      isAdmin: user.is_admin,
-      createdAt: user.created_at,
+      first_name: user.first_name,
+      last_name: user.last_name,
     };
   }
 
@@ -34,7 +34,14 @@ class User {
   }
 
   static async register(credentials) {
-    const requiredFields = ["email", "password", "username", "isAdmin"];
+    console.log("register");
+    const requiredFields = [
+      "email",
+      "password",
+      "username",
+      "first_name",
+      "last_name",
+    ];
     requiredFields.forEach((property) => {
       if (!credentials.hasOwnProperty(property)) {
         throw new BadRequestError(`Missing ${property} in request body.`);
@@ -45,17 +52,17 @@ class User {
       throw new BadRequestError("Invalid email.");
     }
 
-    const existingUser = await User.fetchUserByEmail(credentials.email);
-    if (existingUser) {
+    const existingEmail = await User.fetchUserByEmail(credentials.email);
+    if (existingEmail) {
       throw new BadRequestError(
         `A user already exists with email: ${credentials.email}`
       );
     }
 
-    const existingUserWithUsername = await User.fetchUserByUsername(
+    const existingUsername = await User.fetchUserByUsername(
       credentials.username
     );
-    if (existingUserWithUsername) {
+    if (existingUsername) {
       throw new BadRequestError(
         `A user already exists with username: ${credentials.username}`
       );
@@ -66,17 +73,17 @@ class User {
       BCRYPT_WORK_FACTOR
     );
     const normalizedEmail = credentials.email.toLowerCase();
-
     const userResult = await db.query(
-      `INSERT INTO users (email, password, username, is_admin)
-       VALUES ($1, $2, $3, $4)
-       RETURNING id, email, username, is_admin, created_at;
-      `,
+      `INSERT INTO users (email, password, username, last_name, first_name)
+         VALUES ($1, $2, $3, $4, $5)
+         RETURNING id, email, username, last_name, first_name, created_at;
+        `,
       [
         normalizedEmail,
         hashedPassword,
         credentials.username,
-        credentials.isAdmin,
+        credentials.last_name,
+        credentials.first_name,
       ]
     );
     const user = userResult.rows[0];
