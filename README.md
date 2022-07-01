@@ -810,7 +810,7 @@ Here are the pieces of functionality that should be built out for the backend:
 This is a huge project and represents a complete application with user-owned resources. Accordingly, it can, should, and will test the limits of your capabilities. Do your best and don't be afraid to Google! Especially in regards to any SQL that might be tricky.
 
   
-### Reflection Week 3\4
+### Reflection Week 4
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
