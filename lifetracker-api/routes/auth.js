@@ -13,7 +13,7 @@ router.post("/login", async (req, res, next) => {
 
 router.post("/register", async (req, res, next) => {
   try {
-    const user = await User.register({ ...req.body, isAdmin: false });
+    const user = await User.register({ ...req.body });
     return res.status(201).json({ user });
   } catch (err) {
     next(err);
