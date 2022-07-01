@@ -5,6 +5,13 @@ const SECRET_KEY = process.env.SECRET_KEY || "123supersecretkey4me";
 
 const generateToken = (data) => jwt.sign(data, SECRET_KEY);
 
+const createUserJwt = (user) => {
+  const payload = {
+    email: user.email,
+  };
+  return generateToken(payload);
+};
+
 const validateToken = (token) => {
   try {
     return jwt.verify(token, SECRET_KEY);
@@ -24,4 +31,4 @@ const validateToken = (token) => {
 
 // testTokens();
 
-module.exports = { generateToken, validateToken };
+module.exports = { generateToken, validateToken, createUserJwt };
