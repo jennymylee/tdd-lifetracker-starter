@@ -8,6 +8,9 @@ Everywhere around us is data waiting to be collected and utilized. In recent yea
 
 This application will be built using the battle-tested PERN stack - PostgreSQL, Express, React, and Node.
 
+## Week 4 Gif
+![](walkthrough.gif)
+
 ## Goals
 
 Building this application you will accomplish the following:
@@ -107,16 +110,16 @@ The components in the `App.jsx` file should render the following components (alo
 - To build out the front-end, start with the `App.jsx` component:
 
   - [ ] **`App.jsx`**
-    - [ ] Should be wrapped by an element with the `className` of `app`
+    - [X] Should be wrapped by an element with the `className` of `app`
     - [ ] The core App component that contains the routes for the app wrapped in Context providers
-    - [ ] Renders the `Navbar` component on every route
-    - [ ] Renders a `BrowserRouter` component that contains a `Routes` component with the following routes:
-      - [ ] `/` - Should render the `Landing.jsx` component
-      - [ ] `/login` - Should render the `LoginPage.jsx` component
-      - [ ] `/register` - Should render the `RegistrationPage.jsx` component
-      - [ ] `/activity` - Should render the `ActivityPage.jsx` component (only if the user is logged in, otherwise it renders the `AccessForbidden.jsx` component)
-      - [ ] `/nutrition/* - should render the `NutritionPage.jsx`component (only if the user is logged in, otherwise it renders the`AccessForbidden.jsx` component)
-      - [ ] `*` - anything else should render the `NotFound` component
+    - [X] Renders the `Navbar` component on every route
+    - [X] Renders a `BrowserRouter` component that contains a `Routes` component with the following routes:
+      - [X] `/` - Should render the `Landing.jsx` component
+      - [X] `/login` - Should render the `LoginPage.jsx` component
+      - [X] `/register` - Should render the `RegistrationPage.jsx` component
+      - [X] `/activity` - Should render the `ActivityPage.jsx` component (only if the user is logged in, otherwise it renders the `AccessForbidden.jsx` component)
+      - [X] `/nutrition/* - should render the `NutritionPage.jsx`component (only if the user is logged in, otherwise it renders the`AccessForbidden.jsx` component)
+      - [X] `*` - anything else should render the `NotFound` component
   - [ ] To standarize API requests throughout the application, set up an **`ApiClient`** class
 
     - [ ] Start by creating a `constants.js` file at the root of the project
@@ -165,27 +168,27 @@ The components in the `App.jsx` file should render the following components (alo
     - [ ] Create and export a `useAuthContext` hook that calls the `React.useContext` hook with the newly created `AuthContext` and returns it.
     - [ ] In `App.jsx` file create an `AppContainer` component that wraps the `App` component with the `AuthContextProvider` component (which should still be nested inside the `BrowserRouter` component from `react-router-dom`). Export the `AppContainer` component by default instead of the `App`
 
-  - [ ] The **`Loading.jsx`** component
+  - [X] The **`Loading.jsx`** component
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `loading`
-    - [ ] Should render an element with the `className` of `loading-message` that contains the text `"Loading"`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `loading`
+    - [X] Should render an element with the `className` of `loading-message` that contains the text `"Loading"`
 
-  - [ ] The **`Navbar.jsx`** component
+  - [X] The **`Navbar.jsx`** component
 
-    - [ ] Should render JSX that is wrapped by a `nav` element with the `className` of `navbar`
-    - [ ] Should render the app's logo:
-      - [ ] It should be an element with the `className` of `logo`.
-      - [ ] Inside that element should be a `Link` component from `react-router-dom` that navigates the user to the `/` route when clicked.
-      - [ ] Inside that `Link` component should be the application's logo (text or image)
-    - [ ] Should render the `NavLinks.jsx` component with links to each of the resources and the `/activity` route
+    - [X] Should render JSX that is wrapped by a `nav` element with the `className` of `navbar`
+    - [X] Should render the app's logo:
+      - [X] It should be an element with the `className` of `logo`.
+      - [X] Inside that element should be a `Link` component from `react-router-dom` that navigates the user to the `/` route when clicked.
+      - [X] Inside that `Link` component should be the application's logo (text or image)
+    - [X] Should render the `NavLinks.jsx` component with links to each of the resources and the `/activity` route
 
   - [ ] The **`NavLinks.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with a `className` of `nav-links`
-    - [ ] Should render a `Link` element from `react-router-dom` for:
-      - [ ] The `/activity` route. It should have a label of `Activity`.
-      - [ ] The `/nutrition` route. It should have a label of `Nutrition`.
-      - [ ] A route for any other resource page
+    - [X] Should render JSX that is wrapped by an element with a `className` of `nav-links`
+    - [X] Should render a `Link` element from `react-router-dom` for:
+      - [X] The `/activity` route. It should have a label of `Activity`.
+      - [X] The `/nutrition` route. It should have a label of `Nutrition`.
+      - [X] A route for any other resource page
     - [ ] If a valid user is logged in:
       - [ ] It should render an element with the `className` of `logout-button` that calls the `logoutUser` function when clicked.
         - [ ] That function should remove the `lifetracker_token` from local storage and refresh the page so that all user data is reset.
@@ -195,70 +198,70 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [ ] The **`LoginForm.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `login-form`
-    - [ ] Should render an input element for the following fields:
-      - [ ] `email`
-      - [ ] `password`
-    - [ ] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
-      - [ ] `name` - the `name` of the `input` field being rendered (`email`, `password`)
-      - [ ] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
-      - [ ] `value` - the current value of the `input` element
-      - [ ] `onChange` - the `onChange` handler function
-    - [ ] The component should validate the `email` field:
-      - [ ] If the user has entered text into the `email` field and it doesn't contain an `@` symbol, then an error message should be displayed in an element with the `className` of `error` indicating that the entry is not a valid email.
+    - [X] Should render JSX that is wrapped by an element with the `className` of `login-form`
+    - [X] Should render an input element for the following fields:
+      - [X] `email`
+      - [X] `password`
+    - [X] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
+      - [X] `name` - the `name` of the `input` field being rendered (`email`, `password`)
+      - [X] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
+      - [X] `value` - the current value of the `input` element
+      - [X] `onChange` - the `onChange` handler function
+    - [X] The component should validate the `email` field:
+      - [X] If the user has entered text into the `email` field and it doesn't contain an `@` symbol, then an error message should be displayed in an element with the `className` of `error` indicating that the entry is not a valid email.
     - [ ] The component should gracefully handle errors:
       - [ ] If the user has attempted to login and gotten a `401` error, then an error message should be displayed in an element with the `className` of `error` indicating that the `email` and `password` combination is incorrect.
       - [ ] If the user has attempted to login and gotten a `400` or `422` error, then an error message should be displayed in an element with the `className` of `error` indicating what went wrong.
-    - [ ] There should be a `button` element with the `className` of `submit-login`:
-      - [ ] It should contain the text `"Login"`
+    - [X] There should be a `button` element with the `className` of `submit-login`:
+      - [X] It should contain the text `"Login"`
       - [ ] When clicked, it should call the `loginUser` function
 
   - [ ] The **`LoginPage.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `login-page`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `login-page`
     - [ ] Using either a custom hook, context, or manually set state, this component should check to see if a user is already logged in
       - [ ] If the user is already logged in, it should redirect them to the `/activity` page
       - [ ] If no user is authenticated, it should render the `LoginForm.jsx` component and pass it any props it needs
 
   - [ ] The **`RegistrationForm.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `registration-form`
-    - [ ] Should render an input element for the following fields:
-      - [ ] `email`
-      - [ ] `username`
-      - [ ] `firstName`
-      - [ ] `lastName`
-      - [ ] `password`
-      - [ ] `passwordConfirm`
-    - [ ] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
-      - [ ] `name` - the `name` of the `input` field being rendered (`email`, `username`, `firstName`, `lastName`, `password`, `passwordConfirm`)
-      - [ ] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
-      - [ ] `value` - the current value of the `input` element
-      - [ ] `onChange` - the `onChange` handler function
-    - [ ] The component should validate the `email` field:
-      - [ ] If the user has entered text into the `email` field and it doesn't contain an `@` symbol, then an error message should be displayed in an element with the `className` of `error` indicating that the entry is not a valid email.
-    - [ ] The component should validate the `password` and `passwordConfirm` fields:
-      - [ ] If the user has entered text into the `password` and `passwordConfirm` fields and they don't match, then a message should be displayed in an element with the `className` of `error` with a message that contains the text: `passwords don't match`
-    - [ ] The component should gracefully handle errors:
-      - [ ] If the user has attempted to login and gotten a `401` error, then the `errors` object should contain a `form` property that contains a message indicating that the `email` and `password` combination is incorrect.
+    - [X] Should render JSX that is wrapped by an element with the `className` of `registration-form`
+    - [X] Should render an input element for the following fields:
+      - [X] `email`
+      - [X] `username`
+      - [X] `firstName`
+      - [X] `lastName`
+      - [X] `password`
+      - [X] `passwordConfirm`
+    - [X] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
+      - [X] `name` - the `name` of the `input` field being rendered (`email`, `username`, `firstName`, `lastName`, `password`, `passwordConfirm`)
+      - [X] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
+      - [X] `value` - the current value of the `input` element
+      - [X] `onChange` - the `onChange` handler function
+    - [X] The component should validate the `email` field:
+      - [X] If the user has entered text into the `email` field and it doesn't contain an `@` symbol, then an error message should be displayed in an element with the `className` of `error` indicating that the entry is not a valid email.
+    - [X] The component should validate the `password` and `passwordConfirm` fields:
+      - [X] If the user has entered text into the `password` and `passwordConfirm` fields and they don't match, then a message should be displayed in an element with the `className` of `error` with a message that contains the text: `passwords don't match`
+    - [] The component should gracefully handle errors:
+      - [] If the user has attempted to login and gotten a `401` error, then the `errors` object should contain a `form` property that contains a message indicating that the `email` and `password` combination is incorrect.
       - [ ] If the user has attempted to login and gotten a `400` or `422` error, then the `errors` object should contain a `form` property that contains a message indicating what went wrong.
-    - [ ] There should be a `button` element with the `className` of `submit-registration`:
-      - [ ] It should contain the text `"Create Account"`
+    - [X] There should be a `button` element with the `className` of `submit-registration`:
+      - [X] It should contain the text `"Create Account"`
       - [ ] When clicked, it should call the `signupUser` function
 
   - [ ] The **`RegistrationPage.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `registration-page`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `registration-page`
     - [ ] Using either a custom hook, context, or manually handled state, this component should check to see if a user is already logged in
       - [ ] If the user is already logged in, it should redirect them to the `/activity` page
       - [ ] If no user is authenticated, it should render the `RegistrationForm.jsx` component and pass it any props it needs
 
   - [ ] The **`LandingPage.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `landing-page`
-    - [ ] Should render an element with the `className` of `hero`
-      - [ ] Inside it, display a large hero image using an `img` element with the `className` of `hero-img`
-      - [ ] Render a brief blurb on what this application is about inside an element with the `className` of `cta`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `landing-page`
+    - [X] Should render an element with the `className` of `hero`
+      - [X] Inside it, display a large hero image using an `img` element with the `className` of `hero-img`
+      - [X] Render a brief blurb on what this application is about inside an element with the `className` of `cta`
     - [ ] Should allow unauthenticated access
 
   - [ ] The **`activity`** context
@@ -284,41 +287,41 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [ ] The **`ActivityPage.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `activity-page`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `activity-page`
     - [ ] It should call the `useActivityContext` hook and extract all the necessary data from it.
     - [ ] If the `isProcessing` flag is `true`, it should render the `Loading.jsx` component
     - [ ] If the `isProcessing` flag is `false`, it should render the `ActivityFeed.jsx` component and pass it the appropriate props
 
   - [ ] The **`ActivityFeed.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `activity-feed`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `activity-feed`
     - [ ] Should accept **at least** the following props:
       - [ ] `totalCaloriesPerDay` - an array of items containing summary data about the total calories consumed per day
       - [ ] `avgCaloriesPerCategory` - an array of items containing summary data about the average calories consumed per category
       - [ ] Any other
-    - [ ] Inside an element with the `className` of `per-category`, it should:
-      - [ ] Render the text: `"Average Calories Per Category` inside an `h4` element
-      - [ ] Take the first `6` or less items in the `avgCaloriesPerCategory` array and render a `SummaryStat.jsx` component for each item.
-        - [ ] It should pass the calories **rounded down to one decimal place** as the `stat` prop
-        - [ ] It should pass the string of `calories` as the `label` prop
-        - [ ] It should pass the `category` as the `substat` prop
-    - [ ] Inside an element with the `className` of `per-day`, it should:
-      - [ ] Render the text: `"Total Calories Per Day` inside an `h4` element
-      - [ ] For each item in the `totalCaloriesPerDay` array, it should render a `SummaryStat.jsx` component.
-        - [ ] It should pass the calories **rounded down to the nearest whole number** as the `stat` prop
-        - [ ] It should pass the string of `calories` as the `label` prop
-        - [ ] It should pass the `date` in the format `dd/mm/yyyy` - example: `07/02/2022` - as the `substat` prop
+    - [X] Inside an element with the `className` of `per-category`, it should:
+      - [X] Render the text: `"Average Calories Per Category` inside an `h4` element
+      - [X] Take the first `6` or less items in the `avgCaloriesPerCategory` array and render a `SummaryStat.jsx` component for each item.
+        - [X] It should pass the calories **rounded down to one decimal place** as the `stat` prop
+        - [X] It should pass the string of `calories` as the `label` prop
+        - [X] It should pass the `category` as the `substat` prop
+    - [X] Inside an element with the `className` of `per-day`, it should:
+      - [X] Render the text: `"Total Calories Per Day` inside an `h4` element
+      - [X] For each item in the `totalCaloriesPerDay` array, it should render a `SummaryStat.jsx` component.
+        - [X] It should pass the calories **rounded down to the nearest whole number** as the `stat` prop
+        - [X] It should pass the string of `calories` as the `label` prop
+        - [X] It should pass the `date` in the format `dd/mm/yyyy` - example: `07/02/2022` - as the `substat` prop
 
-  - [ ] The **`SummaryStat.jsx`** component:
+  - [X] The **`SummaryStat.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `summary-stat`
-    - [ ] Should accept **at least** the following props:
-      - [ ] `stat` - the primary statistic to display
-      - [ ] `label` - the unit label assigned to the statistic
-      - [ ] `substat` - a secondary statistic related to the primary statistic
-    - [ ] It should render the `stat` prop inside an element with the `className` of `primary-statistic`
-    - [ ] It should render the `label` prop inside an element with the `className` of `stat-label`
-    - [ ] It should render the `substat` prop inside an element with the `className` of `secondary-statistic`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `summary-stat`
+    - [X] Should accept **at least** the following props:
+      - [X] `stat` - the primary statistic to display
+      - [X] `label` - the unit label assigned to the statistic
+      - [X] `substat` - a secondary statistic related to the primary statistic
+    - [X] It should render the `stat` prop inside an element with the `className` of `primary-statistic`
+    - [X] It should render the `label` prop inside an element with the `className` of `stat-label`
+    - [X] It should render the `substat` prop inside an element with the `className` of `secondary-statistic`
 
   - [ ] The **`nutrition`** context
 
@@ -339,19 +342,19 @@ The components in the `App.jsx` file should render the following components (alo
       - [ ] Make sure to pass an object containing all the state variables to the `value` prop of the `NutritionContext.Provider` component
     - [ ] Create and export a `useNutritionContext` hook that calls the `React.useContext` hook with the newly created `NutritionContext` and returns it.
 
-  - [ ] The **`NutritionPage.jsx`** component:
+  - [X] The **`NutritionPage.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-page`
-    - [ ] Should render a nested `Routes` component from `react-router-dom`.
-      - [ ] There should be multiple `Route` components:
-        - [ ] The `/nutrition` route should render the `NutritionOverview.jsx` component
-        - [ ] The `/nutrition/create` route should render the `NutritionNew.jsx` component
-        - [ ] The `/nutrition/id/:nutritionId` should render the `NutritionDetail.jsx` component
-        - [ ] Any other route should render the `NotFound` component
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-page`
+    - [X] Should render a nested `Routes` component from `react-router-dom`.
+      - [X] There should be multiple `Route` components:
+        - [X] The `/nutrition` route should render the `NutritionOverview.jsx` component
+        - [X] The `/nutrition/create` route should render the `NutritionNew.jsx` component
+        - [X] The `/nutrition/id/:nutritionId` should render the `NutritionDetail.jsx` component
+        - [X] Any other route should render the `NotFound` component
 
   - [ ] The **`NutritionOverview.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-overview`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-overview`
     - [ ] It should call the `useNutritionContext` hook and extract all the necessary data from it.
       - [ ] If the `error` state variable has a valid string in it, it should render the `error` message inside an element with the `className` of `error`
       - [ ] If the `isLoading` boolean is `true`, it should render the `Loading.jsx` component
@@ -360,7 +363,7 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [ ] The **`NutritionFeed.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-feed`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-feed`
     - [ ] It should receive **at least** the following props:
       - [ ] `nutritions` - an array of `nutrition` items
     - [ ] If the `nutritions` array has no items in it, it should render an empty message that says `Nothing here yet` inside an element with the `className` of `empty-message`
@@ -369,27 +372,27 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [ ] The **`NutritionNew.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-new`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-new`
     - [ ] Should render the `NutritionForm.jsx` component and pass it the appropriate props
 
   - [ ] The **`NutritionForm.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-form`
-    - [ ] Should render an input element for the following fields:
-      - [ ] `name` - name of the nutrition item (defaults to an empty string)
-      - [ ] `calories` - number of calories in the nutrition item (defaults to 1)
-      - [ ] `imageUrl` - the `url` of an image to show for this nutrition item (defaults to an empty string)
-      - [ ] `category` - the category that this nutrition item belongs to, like fruit, meat, soda, snack, nuts, etc. (defaults to an empty string)
-    - [ ] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
-      - [ ] `name` - the `name` of the `input` field being rendered (`name`, `calories`, `imageUrl`, `category`)
-      - [ ] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
-      - [ ] `value` - the current value of the `input` element
-      - [ ] `onChange` - the `onChange` handler function
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-form`
+    - [X] Should render an input element for the following fields:
+      - [X] `name` - name of the nutrition item (defaults to an empty string)
+      - [X] `calories` - number of calories in the nutrition item (defaults to 1)
+      - [X] `imageUrl` - the `url` of an image to show for this nutrition item (defaults to an empty string)
+      - [X] `category` - the category that this nutrition item belongs to, like fruit, meat, soda, snack, nuts, etc. (defaults to an empty string)
+    - [X] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
+      - [X] `name` - the `name` of the `input` field being rendered (`name`, `calories`, `imageUrl`, `category`)
+      - [X] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
+      - [X] `value` - the current value of the `input` element
+      - [X] `onChange` - the `onChange` handler function
     - [ ] The component should gracefully handle errors:
       - [ ] If any of the required fields are left blank, there should be an error message inside of an element with the `className` of `error` indicating which fields are required.
       - [ ] If the user has attempted to create a nutrition entry and gotten a `400` or `422` error, then that message should be displayed inside an element with the `className` of `error`
-    - [ ] There should be a `button` element with the `className` of `submit-nutrition`:
-      - [ ] It should contain the text `"Save"`
+    - [X] There should be a `button` element with the `className` of `submit-nutrition`:
+      - [X] It should contain the text `"Save"`
       - [ ] When clicked, it should call a function that creates a new nutrition entry
     - [ ] After the form has been succesfully submitted:
       - [ ] Ensure that the new nutrition entry is stored in the `nutrition` context's `nutritions` array and is displayed in the `NutritionFeed.jsx` component
@@ -397,30 +400,30 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [ ] The **`NutritionDetail.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-detail`
-    - [ ] It should leverage the `useParams` hook from `react-router-dom` to extract the `nutritionId` param from the url
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-detail`
+    - [X] It should leverage the `useParams` hook from `react-router-dom` to extract the `nutritionId` param from the url
     - [ ] When the component is mounted to the screen...
       - [ ] It should make a `GET` request to the `/nutrition/:nutritionId` endpoint with the `axios.get` method.
       - [ ] The `:nutritionId` part of the request should be replaced with the `nutritionId` pulled from the url.
       - [ ] When the initial request is loading, it should render an `h1` element with the `className` of `loading` and contain the text `"Loading..."`
       - [ ] It should store the `nutrition` received by the request in state and then render a `NutritionCard.jsx` component for that nutrition.
-      - [ ] If no `nutrition` is found with that `id`, it should render the `NotFound.jsx` component
+      - [X] If no `nutrition` is found with that `id`, it should render the `NotFound.jsx` component
 
   - [ ] The **`NutritionCard.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-card`
-    - [ ] Should accept **at least** the following props:
-      - [ ] `nutrition` - should be a nutrition entry object containing the following attributes:
-        - [ ] `imageUrl` - (not required)
-        - [ ] `name` - (required)
-        - [ ] `calories` - (required)
-        - [ ] `category` - (required)
-        - [ ] `createdAt` - (required)
-    - [ ] It should render the `name` of the `nutrition` entry inside an element with the `className` of `nutrition-name`
-    - [ ] If the `nutrition` entry has a valid `imageUrl` attribute, it should render an `img` element with the `className` of `nutrition-image` and use that `imageUrl` as its `src`
-    - [ ] It should render the `calories` attribute of the `nutrition` entry inside an element with the `className` of `nutrition-calories`
-    - [ ] It should render the `category` attribute of the `nutrition` entry inside an element with the `className` of `nutrition-category`
-    - [ ] It should render the `createdAt` attribute of the `nutrition` entry in the format `dd/mm/yyyy` - example: `07/02/2022` - inside an element with the `className` of `nutrition-date`.
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-card`
+    - [X] Should accept **at least** the following props:
+      - [X] `nutrition` - should be a nutrition entry object containing the following attributes:
+        - [X] `imageUrl` - (not required)
+        - [X] `name` - (required)
+        - [X] `calories` - (required)
+        - [X] `category` - (required)
+        - [X] `createdAt` - (required)
+    - [X] It should render the `name` of the `nutrition` entry inside an element with the `className` of `nutrition-name`
+    - [X] If the `nutrition` entry has a valid `imageUrl` attribute, it should render an `img` element with the `className` of `nutrition-image` and use that `imageUrl` as its `src`
+    - [X] It should render the `calories` attribute of the `nutrition` entry inside an element with the `className` of `nutrition-calories`
+    - [X] It should render the `category` attribute of the `nutrition` entry inside an element with the `className` of `nutrition-category`
+    - [X] It should render the `createdAt` attribute of the `nutrition` entry in the format `dd/mm/yyyy` - example: `07/02/2022` - inside an element with the `className` of `nutrition-date`.
 
   - [ ] DO THE SAME FOR ANY OTHER RESOURCE THAT IS IN THE APPLICATION
 
@@ -441,22 +444,22 @@ Note that when developing the backend, SITE interns will be asked to write tests
 Here are the pieces of functionality that should be built out for the backend:
 
 - **Project setup**
-  - [ ] First things first, bootstrap the Express application with some essential files and starter code
-  - [ ] Create a `.gitignore` file, an `app.js` file, an `app.test.js` file, and a `server.js` file
-  - [ ] Make sure `node_modules` are added to the `.gitignore` file.
-  - [ ] Add dependencies for `express@next`, `morgan`, `cors`, and `nodemon`
-  - [ ] Install new dependencies for `bcrypt`, `jsonwebtoken`, `colors`, `dotenv`, `pg`
-  - [ ] Commit all work to `git`
-  - [ ] Add a `.env` file to the root of the repo and include the following environment variables
-    - [ ] `PORT` (default to `3001`)
-    - [ ] `SECRET_KEY` (set to a long random string)
-    - [ ] `BCRYPT_WORK_FACTOR` (set to `13`)
-    - [ ] `DATABASE_USER`
-    - [ ] `DATABASE_PASS`
-    - [ ] `DATABASE_HOST`
-    - [ ] `DATABASE_PORT`
-    - [ ] `DATABASE_NAME` - (set to `lifetracker`)
-    - [ ] `DATABASE_TEST_NAME` - (set to `lifetracker_test`)
+  - [X] First things first, bootstrap the Express application with some essential files and starter code
+  - [X] Create a `.gitignore` file, an `app.js` file, an `app.test.js` file, and a `server.js` file
+  - [X] Make sure `node_modules` are added to the `.gitignore` file.
+  - [X] Add dependencies for `express@next`, `morgan`, `cors`, and `nodemon`
+  - [X] Install new dependencies for `bcrypt`, `jsonwebtoken`, `colors`, `dotenv`, `pg`
+  - [X] Commit all work to `git`
+  - [X] Add a `.env` file to the root of the repo and include the following environment variables
+    - [X] `PORT` (default to `3001`)
+    - [X] `SECRET_KEY` (set to a long random string)
+    - [X] `BCRYPT_WORK_FACTOR` (set to `13`)
+    - [X] `DATABASE_USER`
+    - [X] `DATABASE_PASS`
+    - [X] `DATABASE_HOST`
+    - [X] `DATABASE_PORT`
+    - [X] `DATABASE_NAME` - (set to `lifetracker`)
+    - [X] `DATABASE_TEST_NAME` - (set to `lifetracker_test`)
   - [ ] Add a `config.test.js` file
     - [ ] Write tests that check to make sure that:
       - [ ] `process.env.NODE_ENV` is set to `test` when the test suite is run
@@ -471,67 +474,67 @@ Here are the pieces of functionality that should be built out for the backend:
         - [ ] Check to see if a valid `process.env.DATABASE_URL` environment variable exists, and return that if it does.
         - [ ] When `IS_TESTING` is `true`, the `getDatabaseUri` function should use the test database
         - [ ] Otherwise, it should combine the proper database environment variables into a database connection string if no `process.env.DATABASE_URL` environment variable exists
-  - [ ] Add a `config.js` file
-    - [ ] Use the `dotenv` package to parse the environment variables from the `.env` file.
-    - [ ] Export each of the environment variables from the `config.js` file until the tests pass
-    - [ ] Write a `getDatabaseUri` function so that all the tests pass
-  - [ ] Commit all work to `git`
-  - [ ] The project should now be ready to go!
+  - [X] Add a `config.js` file
+    - [X] Use the `dotenv` package to parse the environment variables from the `.env` file.
+    - [X] Export each of the environment variables from the `config.js` file until the tests pass
+    - [X] Write a `getDatabaseUri` function so that all the tests pass
+  - [X] Commit all work to `git`
+  - [X] The project should now be ready to go!
 - **PostgreSQL database**
   - Time bring in a PostgreSQL database client as the application's persistence layer
   - Make sure the PostgreSQL server is running
   - Create two files at the root of the project:
-    - [ ] `lifetracker-schema.sql`
-      - [ ] This script should:
-        - [ ] Create a `users` table with the following columns:
-          - [ ] `id`
-          - [ ] `username`
-          - [ ] `password`
-          - [ ] `first_name`
-          - [ ] `last_name`
-          - [ ] `email`
-          - [ ] `created_at`
-          - [ ] `updated_at`
-        - [ ] Create a `nutrition` table with the following columns:
-          - [ ] `id`
-          - [ ] `name`
-          - [ ] `category`
-          - [ ] `calories`
-          - [ ] `image_url`
-          - [ ] `user_id`
-          - [ ] `created_at`
-        - [ ] **Any other tables** that the application might depend on
-    - [ ] `lifetracker.sql`
-      - [ ] This script should:
-        - [ ] 1. Let the user know that they're about to delete the `lifetracker` db and prompt them to confirm that is what they want.
-        - [ ] 2. Drop the `lifetracker` database and then create a new `lifetracker` database, before connecting to the `lifetracker` database.
-        - [ ] 3. It should then run the `lifetracker-schema.sql` file.
-        - [ ] Follow the exact same steps for `1`, `2`, and `3`, but with the `lifetracker_test` database.
-  - [ ] Setup the database by running `psql -f lifetracker.sql`
-  - [ ] Create a new file at the root of the project called `db.js`. In that file:
-    - [ ] Import the `getDatabaseUri` function from the `config.js` file.
-    - [ ] Initialize a new postgres client with the `pg` package and connect to PostgreSQL using any necessary config variables.
-    - [ ] Connect to postgres and log a message to the terminal on success or failure.
-    - [ ] Export the connected database client
-  - [ ] Commit all work to `git`
-  - [ ] A database client is now ready to be used!
+    - [X] `lifetracker-schema.sql`
+      - [X] This script should:
+        - [X] Create a `users` table with the following columns:
+          - [X] `id`
+          - [X] `username`
+          - [X] `password`
+          - [X] `first_name`
+          - [X] `last_name`
+          - [X] `email`
+          - [X] `created_at`
+          - [X] `updated_at`
+        - [X] Create a `nutrition` table with the following columns:
+          - [X] `id`
+          - [X] `name`
+          - [X] `category`
+          - [X] `calories`
+          - [X] `image_url`
+          - [X] `user_id`
+          - [X] `created_at`
+        - [X] **Any other tables** that the application might depend on
+    - [X] `lifetracker.sql`
+      - [X] This script should:
+        - [X] 1. Let the user know that they're about to delete the `lifetracker` db and prompt them to confirm that is what they want.
+        - [X] 2. Drop the `lifetracker` database and then create a new `lifetracker` database, before connecting to the `lifetracker` database.
+        - [X] 3. It should then run the `lifetracker-schema.sql` file.
+        - [X] Follow the exact same steps for `1`, `2`, and `3`, but with the `lifetracker_test` database.
+  - [X] Setup the database by running `psql -f lifetracker.sql`
+  - [X] Create a new file at the root of the project called `db.js`. In that file:
+    - [X] Import the `getDatabaseUri` function from the `config.js` file.
+    - [X] Initialize a new postgres client with the `pg` package and connect to PostgreSQL using any necessary config variables.
+    - [X] Connect to postgres and log a message to the terminal on success or failure.
+    - [X] Export the connected database client
+  - [X] Commit all work to `git`
+  - [X] A database client is now ready to be used!
 - **Server**
   - [ ] Build out a bare-bones Express server with a healthcheck route and an adequate middleware pipeline.
-  - [ ] Create a `utils` directory
-    - [ ] In the `utils` directory, create an `errors.js` file.
-    - [ ] Create error classes inside the file that will be used throughout the app.
+  - [X] Create a `utils` directory
+    - [X] In the `utils` directory, create an `errors.js` file.
+    - [X] Create error classes inside the file that will be used throughout the app.
   - [ ] In the `app.test.js` file, write tests that:
     - [ ] Ensure that the Express application responds to `GET` requests to the `/` route with a JSON object of `{ "ping": "pong" }`
     - [ ] Check that middleware like `morgan` and `cors` exist, along with the JSON `body-parser` middleware from `express`
     - [ ] Include an `afterAll` hook that calls `await db.end()` so that any open database connections close when all the tests are finished.
   - [ ] Add code to the `app.js` and `server.js` file to get a simple server running along with responding to `GET` requests to the `/` route
-  - [ ] Create error classes inside the `utils/errors.js` file.
-  - [ ] Add `404` and generic error handler middlewares to the `app.js` file.
-  - [ ] In the `server.js` file:
-    - [ ] Import the Express app and the `config.js` file
-    - [ ] Have the `app` listen on the port specified by `config.PORT`.
-  - [ ] Commit all work to `git`
-  - [ ] Test out the fancy new Express server by starting it up in a new terminal window!
+  - [X] Create error classes inside the `utils/errors.js` file.
+  - [X] Add `404` and generic error handler middlewares to the `app.js` file.
+  - [X] In the `server.js` file:
+    - [X] Import the Express app and the `config.js` file
+    - [X] Have the `app` listen on the port specified by `config.PORT`.
+  - [X] Commit all work to `git`
+  - [X] Test out the fancy new Express server by starting it up in a new terminal window!
 - **Common Test Configuration**
   - [ ] It would probably be helpful to create some common test functions that can be used throughout the application's testing suite.
   - [ ] Create a new directory called `tests`
@@ -555,13 +558,13 @@ Here are the pieces of functionality that should be built out for the backend:
   - [ ] In any new test file, make sure to import these functions and use them with the correct `jest` lifecycle hooks
 - **Authentication**
   - [ ] Go ahead and build out a full-fledged authentication flow using PostgreSQL, `bcrypt`, and JSON Web Tokens. For it all to work, we'll need a `User` model, a `security` middleware, some `tokens` utility functions, and the appropriate `auth` routes.
-  - [ ] Add new directories for `models`, `routes`, and `middleware`
-  - [ ] The **User** model
-    - [ ] In the `models` directory, create two new files: `models/user.js` and `models/user.test.js`
-      - [ ] The `User` model should have **at least** the following static methods:
-        - [ ] `login`
-        - [ ] `register`
-        - [ ] `fetchUserByEmail`
+  - [X] Add new directories for `models`, `routes`, and `middleware`
+  - [X] The **User** model
+    - [X] In the `models` directory, create two new files: `models/user.js` and `models/user.test.js`
+      - [X] The `User` model should have **at least** the following static methods:
+        - [X] `login`
+        - [X] `register`
+        - [X] `fetchUserByEmail`
     - [ ] In the `models/user.test.js` file:
       - [ ] Test the `login` method. Write test cases for:
         - [ ] User can login successfully with proper credentials
@@ -576,15 +579,15 @@ Here are the pieces of functionality that should be built out for the backend:
         - [ ] A valid email returns a user from the database
         - [ ] Invalid emails are handled correctly
       - [ ] It will probably be important to use the `beforeAll`, `afterAll`, `beforeEach`, and `afterEach` hooks to add and delete users from the database before running the tests
-    - [ ] In the `models/user.js` file:
-      - [ ] Import the `bcrypt` package, the `db` client, and the app `config`.
-      - [ ] Implement the features outlined in the tests until they're all passing.
-  - [ ] Commit all work to `git`
+    - [X] In the `models/user.js` file:
+      - [X] Import the `bcrypt` package, the `db` client, and the app `config`.
+      - [X] Implement the features outlined in the tests until they're all passing.
+  - [X] Commit all work to `git`
   - [ ] The **tokens** utility functions
     - [ ] In the `utils` directory, create two new files: `utils/tokens.js` and `utils/tokens.test.js`
-      - [ ] At the bare minimum, two functions will be needed:
-        - [ ] One that accepts a JSON payload as an argument and converts it into a JWT
-        - [ ] One that accepts a JWT as an argument, validates it, and returns the JSON payload encoded within - if it's valid
+      - [X] At the bare minimum, two functions will be needed:
+        - [X] One that accepts a JSON payload as an argument and converts it into a JWT
+        - [X] One that accepts a JWT as an argument, validates it, and returns the JSON payload encoded within - if it's valid
     - [ ] In the `utils/tokens.test.js` file:
       - [ ] Write test cases for:
         - [ ] Can create valid JWT tokens for user payloads
@@ -592,16 +595,16 @@ Here are the pieces of functionality that should be built out for the backend:
         - [ ] No payload gets returned when invalid tokens are parsed
     - [ ] In the `utils/tokens.js` file:
       - [ ] Implement the features outlined in the tests until they're all passing
-  - [ ] Commit all work to `git`
-  - [ ] The **security** middleware
+  - [X] Commit all work to `git`
+  - [X] The **security** middleware
     - [ ] In the `middleware` directory, create two new files: `middleware/security.js` and `middleware/security.test.js`
-      - [ ] One middleware will be responsible for extracting a user from a valid JWT in the request:
-        - [ ] Checking the `Authentication` header of each request for the existence of a JWT.
-        - [ ] If one exists, it should extract the token, validate it, extract the encoded JSON payload, and attach it to the response's `locals` property
-      - [ ] One middleware will be responsible for ensuring that an authenticated user exists:
-        - [ ] Checking that a valid user exists on the response's `locals` property
-        - [ ] If one does, the middleware should simply call next
-        - [ ] If no valid user exists, it should throw an `UnauthorizedError`
+      - [X] One middleware will be responsible for extracting a user from a valid JWT in the request:
+        - [X] Checking the `Authentication` header of each request for the existence of a JWT.
+        - [X] If one exists, it should extract the token, validate it, extract the encoded JSON payload, and attach it to the response's `locals` property
+      - [X] One middleware will be responsible for ensuring that an authenticated user exists:
+        - [X] Checking that a valid user exists on the response's `locals` property
+        - [X] If one does, the middleware should simply call next
+        - [X] If no valid user exists, it should throw an `UnauthorizedError`
     - [ ] In the `middleware/security.test.js` file:
       - [ ] Test the `Authentication` header parsing middleware
         - [ ] Write test cases for:
@@ -618,16 +621,16 @@ Here are the pieces of functionality that should be built out for the backend:
   - [ ] Commit all work to `git`
   - [ ] The **/auth** routes
     - [ ] In the `routes` directory, create two new files: `routes/auth.js` and `routes/auth.test.js`
-      - [ ] A new Express router should be created. It should handle:
-        - [ ] A `GET` request to the `/me` endpoint
-          - [ ] It should send a JSON response back to the client with the user info like so: `{ "user": { "email": "user@gmail.com", ... } }`
-        - [ ] A `POST` request to the `/login` endpoint
-          - [ ] It should accept a request body with `email` and `password` keys
-          - [ ] It should send a JSON response back to the client with a new JWT and user info like so: `{ "token": "e2c2...", "user": { "email": "user@gmail.com", ... } }`
-        - [ ] A `POST` request to the `/register` endpoint
-          - [ ] It should accept a request body with `email`, `username`, `firstName`, `lastName`, and `password` keys
-          - [ ] It should send a JSON response back to the client with a `201` status code, along with a new JWT and user info like so: `{ "token": "e2c2...", "user": { "email": "user@gmail.com", ... } }`
-      - [ ] It should be mounted at the `/auth` endpoint in the `app.js` file
+      - [X] A new Express router should be created. It should handle:
+        - [X] A `GET` request to the `/me` endpoint
+          - [X] It should send a JSON response back to the client with the user info like so: `{ "user": { "email": "user@gmail.com", ... } }`
+        - [X] A `POST` request to the `/login` endpoint
+          - [X] It should accept a request body with `email` and `password` keys
+          - [X] It should send a JSON response back to the client with a new JWT and user info like so: `{ "token": "e2c2...", "user": { "email": "user@gmail.com", ... } }`
+        - [X] A `POST` request to the `/register` endpoint
+          - [X] It should accept a request body with `email`, `username`, `firstName`, `lastName`, and `password` keys
+          - [X] It should send a JSON response back to the client with a `201` status code, along with a new JWT and user info like so: `{ "token": "e2c2...", "user": { "email": "user@gmail.com", ... } }`
+      - [X] It should be mounted at the `/auth` endpoint in the `app.js` file
     - [ ] In the `routes/auth.test.js` file:
       - [ ] Test the `POST /auth/login` endpoint
         - [ ] Write test cases for:
@@ -649,10 +652,10 @@ Here are the pieces of functionality that should be built out for the backend:
     - [ ] In the `routes/auth.js` file:
       - [ ] Create a new Express router
       - [ ] Implement the features outlined in the tests until they're all passing
-    - [ ] In the `app.js` file:
-    - [ ] Mount the router at the `/auth` endpoint
-  - [ ] Commit all work to `git`
-  - [ ] There should now be a full-fledged authentication system in place!
+    - [X] In the `app.js` file:
+    - [X] Mount the router at the `/auth` endpoint
+  - [X] Commit all work to `git`
+  - [X] There should now be a full-fledged authentication system in place!
 - **Resources and Permissions**
   - [ ] Next, implement the functionality to allow users to save instances of things they've drank/eaten, so that they can track their own nutrition data! Also make sure users can only access the data that they themselves have created. No other user should be able to see any data owned by another user!
   - [ ] The **Nutrition** model
@@ -805,3 +808,23 @@ Here are the pieces of functionality that should be built out for the backend:
 ## Wrapping Up and Resources
 
 This is a huge project and represents a complete application with user-owned resources. Accordingly, it can, should, and will test the limits of your capabilities. Do your best and don't be afraid to Google! Especially in regards to any SQL that might be tricky.
+
+  
+### Reflection Week 3\4
+
+* Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
+
+  Most topics discussed in my labs prepared me to complete the assignment. I felt unprepader to implement the security middleware.
+
+* If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
+  
+  If I had more time, I would look online for more resources to gain a better understanding of the whole authentication process.
+
+* Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
+
+  Regarding my project demo, I made sure to test everything prior to presenting, so everything went as planned. I noticed that my peers focused more on the backend and were able to connect their frontend to their backend in time.
+
+
+### Open-source libraries used
+
+- no open-source libraries were used
