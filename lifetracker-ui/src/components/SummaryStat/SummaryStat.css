@@ -1,0 +1,50 @@
+.summary-stat {
+  width: 360px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.background {
+  mix-blend-mode: normal;
+  justify-content: space-around;
+  padding: 16px 32px;
+  width: 360px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.teal-gradient {
+  background: linear-gradient(64.7deg, #1000c9, #00c98e);
+}
+
+.gold-gradient {
+  background: linear-gradient(64.7deg, #8e3232, #c96d00);
+}
+
+.secondary-statistic {
+  color: #fff;
+  font-size: 20px;
+}
+
+.cal {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: flex-end;
+}
+
+.primary-statistic {
+  color: #fff;
+  font-size: 45px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.stat-label {
+  color: #fff;
+  font-size: 15px;
+  margin: 0 0 6px 5px;
+}

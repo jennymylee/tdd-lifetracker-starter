@@ -1,0 +1,19 @@
+.loading {
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  height: calc(100% - 100px);
+  min-height: calc(100vh - 100px);
+  overflow-x: hidden;
+  background: #2c4147;
+  align-items: center;
+}
+
+.loading-message {
+  font-size: 42px;
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #fff;
+}

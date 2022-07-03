@@ -1,0 +1,16 @@
+.not-found {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nf-code {
+  font-size: 60px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.nf-message {
+  font-weight: 500;
+}
