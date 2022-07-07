@@ -8,6 +8,7 @@ import RegistrationPage from "components/RegistrationPage/RegistrationPage";
 import ActivityPage from "components/ActivityPage/ActivityPage";
 import NutritionPage from "components/NutritionPage/NutritionPage";
 import NotFound from "components/NotFound/NotFound";
+import ProtectedRoute from "components/ProtectedRoute/ProtectedRoute";
 
 import { AuthContextProvider, useAuthContext } from "../../../contexts/auth";
 
@@ -56,19 +57,19 @@ function App() {
               <Route
                 path="/activity"
                 element={
-                  <>
+                  <ProtectedRoute>
                     <Navbar />
                     <ActivityPage />
-                  </>
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path="/nutrition/*"
                 element={
-                  <>
+                  <ProtectedRoute>
                     <Navbar />
                     <NutritionPage />
-                  </>
+                  </ProtectedRoute>
                 }
               />
               <Route

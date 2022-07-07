@@ -7,7 +7,9 @@ import { useAuthContext } from "../../../contexts/auth";
 import NotFound from "components/NotFound/NotFound";
 
 export default function ActivityFeed() {
+  const userToken = window.localStorage.getItem("lifetracker_token");
   const { user } = useAuthContext();
+  console.log("activity feed user", user);
   const avgCaloriesPerCategory = [
     { category: "candy", avgCaloriesPerCategory: 100.0 },
     { category: "drink", avgCaloriesPerCategory: 300.0 },
@@ -77,7 +79,9 @@ export default function ActivityFeed() {
       {user ? (
         <div className="af-content">
           <div className="af-header">
-            <p className="af-title">Activity Feed{user.email}</p>
+            <p className="af-title">
+              Activity Feed{user.email} {userToken}
+            </p>
             <Link to="/nutrition/create">
               <button className="record-nutrition">Record Nutrition</button>
             </Link>

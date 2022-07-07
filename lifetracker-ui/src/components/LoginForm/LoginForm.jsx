@@ -1,10 +1,21 @@
 import * as React from "react";
 import "./LoginForm.css";
 import { useAuthContext } from "../../../contexts/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm({ loggedIn, setLoggedIn }) {
-  const { error, setError, loginUser, refresh, setRefresh } = useAuthContext();
-
+  const {
+    error,
+    setError,
+    loginUser,
+    refresh,
+    setRefresh,
+    user,
+    setUser,
+    initialized,
+    setInitialized,
+  } = useAuthContext();
+  const navigate = useNavigate();
   // const [errors, setErrors] = React.useState({});
   const [form, setForm] = React.useState({
     email: "",
@@ -35,6 +46,7 @@ export default function LoginForm({ loggedIn, setLoggedIn }) {
       console.log("liRes", liRes);
       if (liRes?.user) {
         console.log("there is user logged in", liRes.user);
+        // setUser(liRes.user);
       } else {
         console.log("overhere");
         setError((e) => ({
@@ -43,8 +55,11 @@ export default function LoginForm({ loggedIn, setLoggedIn }) {
         }));
         return;
       }
-      setRefresh(!refresh);
+      setRefresh(true);
       setLoggedIn(true);
+      setInitialized(true);
+
+      // navigate("/activity");
     } catch (err) {
       console.log("login failed");
       console.log("this is login err", err);
@@ -71,7 +86,9 @@ export default function LoginForm({ loggedIn, setLoggedIn }) {
               placeholder="user@gmail.com"
               value={form.email}
             />
-            {error.email && <span className="error">{error.email}</span>}
+            {error && error.email && (
+              <span className="error">{error.email}</span>
+            )}
           </div>
           <div className="input-field">
             <label className="form-label" htmlFor="password">
@@ -85,7 +102,9 @@ export default function LoginForm({ loggedIn, setLoggedIn }) {
               placeholder="password"
               value={form.password}
             />
-            {error.password && <span className="error">{error.password}</span>}
+            {error && error.password && (
+              <span className="error">{error.password}</span>
+            )}
           </div>
           <button className="submit-login" onClick={handleOnSubmit}>
             Login

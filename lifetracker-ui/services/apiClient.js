@@ -8,6 +8,7 @@ export default class ApiClient {
 
   setToken(token) {
     this.token = token;
+    window.localStorage.setItem("lifetracker_token", token);
   }
 
   async request({ endpoint, method = "GET", data = {} }) {
@@ -17,8 +18,9 @@ export default class ApiClient {
         const headers = {
           "Content-Type": "application/json",
         };
-        const result = await axios.post(url, data, { headers });
+        const result = await axios.post({ url, data, headers });
         window.localStorage.removeItem("lifetracker_token");
+        console.log("auth/login res", result);
         window.localStorage.setItem("lifetracker_token", result.data.token);
         return result.data;
       } catch (err) {
@@ -31,7 +33,7 @@ export default class ApiClient {
         const headers = {
           "Content-Type": "application/json",
         };
-        const result = await axios.post(url, data, { headers });
+        const result = await axios.post({ url, data, headers });
         this.login({ email: data.email, password: data.password });
         return result.data;
       } catch (err) {

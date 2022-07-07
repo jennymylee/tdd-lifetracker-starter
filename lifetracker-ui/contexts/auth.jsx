@@ -20,12 +20,13 @@ export const AuthContextProvider = ({ children }) => {
 
       try {
         userToken = window.localStorage.getItem("lifetracker_token");
-        console.log("usertoken", userToken);
+        console.log("usertoken in auth", userToken);
         if (userToken) {
           apiClient.setToken(userToken);
           setIsProcessing(true);
           user = await fetchUserFromToken();
           setUser(user);
+          console.log("user upon refresh", user);
           setError(null);
         }
       } catch (err) {

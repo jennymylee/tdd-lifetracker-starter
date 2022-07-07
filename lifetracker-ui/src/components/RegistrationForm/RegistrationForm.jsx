@@ -4,7 +4,17 @@ import { useAuthContext } from "../../../contexts/auth";
 
 export default function RegistrationForm({ loggedIn, setLoggedIn }) {
   // const [errors, setErrors] = React.useState({});
-  const { error, setError, signupUser, refresh, setRefresh } = useAuthContext();
+  const {
+    error,
+    setError,
+    initialized,
+    setInitialized,
+    user,
+    setUser,
+    signupUser,
+    refresh,
+    setRefresh,
+  } = useAuthContext();
   const [form, setForm] = React.useState({
     email: "",
     username: "",
@@ -74,6 +84,7 @@ export default function RegistrationForm({ loggedIn, setLoggedIn }) {
       console.log("suRes", res);
       if (res?.user) {
         console.log("there is user registered", res.user);
+        // setUser(res.user);
       } else {
         console.log("overhere");
         setError((e) => ({
@@ -82,8 +93,9 @@ export default function RegistrationForm({ loggedIn, setLoggedIn }) {
         }));
         return;
       }
-      setRefresh(!refresh);
+      setRefresh(true);
       setLoggedIn(true);
+      setInitialized(true);
     } catch (err) {
       console.log(err);
       const message = err?.response?.data?.error?.message;
