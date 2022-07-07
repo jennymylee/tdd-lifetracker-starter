@@ -18,7 +18,7 @@ export default class ApiClient {
         const headers = {
           "Content-Type": "application/json",
         };
-        const result = await axios.post({ url, data, headers });
+        const result = await axios.post(url, data, { headers });
         window.localStorage.removeItem("lifetracker_token");
         console.log("auth/login res", result);
         window.localStorage.setItem("lifetracker_token", result.data.token);
@@ -33,7 +33,7 @@ export default class ApiClient {
         const headers = {
           "Content-Type": "application/json",
         };
-        const result = await axios.post({ url, data, headers });
+        const result = await axios.post(url, data, { headers });
         this.login({ email: data.email, password: data.password });
         return result.data;
       } catch (err) {
