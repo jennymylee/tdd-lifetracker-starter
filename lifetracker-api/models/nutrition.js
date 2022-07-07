@@ -66,11 +66,11 @@ class Nutrition {
   static async listNutritionForUser(userId) {
     // Should list all nutrition instances in the database that
     //are owned by a particular user
-    if (!nutritionId) {
+    if (!userId) {
       throw new BadRequestError("userId is null");
     }
     const res = await db.query(`SELECT * FROM nutrition WHERE id=$1;`, [
-      nutritionId,
+      userId,
     ]);
     return res.rows;
   }
