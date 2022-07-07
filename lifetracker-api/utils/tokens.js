@@ -1,16 +1,17 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config;
+const { SECRET_KEY } = require("../config");
+// const SECRET_KEY = process.env.SECRET_KEY || "123supersecretkey4me";
 
-const SECRET_KEY = process.env.SECRET_KEY || "123supersecretkey4me";
-
-const generateToken = (data) => jwt.sign(data, SECRET_KEY);
+const generateToken = (data) =>
+  jwt.sign(data, SECRET_KEY, { expiresIn: "24h" });
 
 const createUserJwt = (user) => {
   const payload = {
     email: user.email,
   };
-  // return generateToken(payload);
-  return generateToken(user);
+  return generateToken(payload);
+  // return generateToken(user);
 };
 
 const validateToken = (token) => {
