@@ -27,13 +27,21 @@ router.post("/register", async (req, res, next) => {
 
 router.get("/me", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
+    console.log("inhere");
     const { email } = res.locals.user;
+
     const user = await User.fetchUserByEmail(email);
     const publicUser = await User.makePublicUser(user);
+
     return res.status(200).json({ user: publicUser });
   } catch (err) {
     next(err);
   }
+  // try {
+  //   res.status(201).json(req.user);
+  // } catch (error) {
+  //   next(error);
+  // }
 });
 
 module.exports = router;

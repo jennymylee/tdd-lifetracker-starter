@@ -9,7 +9,8 @@ const createUserJwt = (user) => {
   const payload = {
     email: user.email,
   };
-  return generateToken(payload);
+  // return generateToken(payload);
+  return generateToken(user);
 };
 
 const validateToken = (token) => {
