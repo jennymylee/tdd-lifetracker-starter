@@ -3,8 +3,11 @@ import { render } from "react-dom";
 import "./ActivityFeed.css";
 import SummaryStat from "components/SummaryStat/SummaryStat";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../../contexts/auth";
+import NotFound from "components/NotFound/NotFound";
 
 export default function ActivityFeed() {
+  const { user } = useAuthContext();
   const avgCaloriesPerCategory = [
     { category: "candy", avgCaloriesPerCategory: 100.0 },
     { category: "drink", avgCaloriesPerCategory: 300.0 },
@@ -71,26 +74,30 @@ export default function ActivityFeed() {
   };
   return (
     <div className="activity-feed">
-      <div className="af-content">
-        <div className="af-header">
-          <p className="af-title">Activity Feed</p>
-          <Link to="/nutrition/create">
-            <button className="record-nutrition">Record Nutrition</button>
-          </Link>
-        </div>
-        <div className="per-category">
-          <h4 className="acpc-title">Average Calories Per Category</h4>
-          <div className="cards">
-            {avgCaloriesPerCategory && renderAverageCaloriesPerCategory()}
+      {user ? (
+        <div className="af-content">
+          <div className="af-header">
+            <p className="af-title">Activity Feed{user.email}</p>
+            <Link to="/nutrition/create">
+              <button className="record-nutrition">Record Nutrition</button>
+            </Link>
+          </div>
+          <div className="per-category">
+            <h4 className="acpc-title">Average Calories Per Category</h4>
+            <div className="cards">
+              {avgCaloriesPerCategory && renderAverageCaloriesPerCategory()}
+            </div>
+          </div>
+          <div className="per-day">
+            <h4 className="acpc-title">Total Calories Per Day</h4>
+            <div className="cards">
+              {totalCaloriesPerDay && renderTotalCaloriesPerDay()}
+            </div>
           </div>
         </div>
-        <div className="per-day">
-          <h4 className="acpc-title">Total Calories Per Day</h4>
-          <div className="cards">
-            {totalCaloriesPerDay && renderTotalCaloriesPerDay()}
-          </div>
-        </div>
-      </div>
+      ) : (
+        <NotFound />
+      )}
     </div>
   );
 }

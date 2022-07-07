@@ -1,8 +1,10 @@
 import * as React from "react";
 import "./NavLinks.css";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../../contexts/auth";
 
-export default function NavLinks({ loggedIn = false }) {
+export default function NavLinks() {
+  const { user, loggedIn, logoutUser } = useAuthContext();
   return (
     <div className="nav-links">
       <div className="nl-content">
@@ -19,8 +21,17 @@ export default function NavLinks({ loggedIn = false }) {
           <p className="nlp">Sleep</p>
         </Link>
 
-        {loggedIn ? (
-          <button className="logout-button">Logout</button>
+        {user ? (
+          <Link to="/">
+            <button
+              className="logout-button"
+              onClick={() => {
+                logoutUser();
+              }}
+            >
+              Logout
+            </button>
+          </Link>
         ) : (
           <>
             <Link className="nll" to="/login">

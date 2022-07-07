@@ -3,17 +3,18 @@ import "./RegistrationPage.css";
 import { useNavigate } from "react-router-dom";
 import RegistrationForm from "components/RegistrationForm/RegistrationForm";
 
-export default function RegistrationPage({ loggedIn = false }) {
+export default function RegistrationPage() {
   const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
+  React.useEffect(() => {
+    if (loggedIn) {
+      navigate("/activity");
+    }
+  }, [loggedIn]);
   return (
     <div className="registration-page">
-      {loggedIn == false ? (
-        <RegistrationForm />
-      ) : (
-        React.useEffect(() => {
-          navigate("/activity"), [];
-        })
-      )}
+      <RegistrationForm loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
     </div>
   );
 }

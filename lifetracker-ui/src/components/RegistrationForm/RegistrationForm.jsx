@@ -1,8 +1,10 @@
 import * as React from "react";
 import "./RegistrationForm.css";
+import { useAuthContext } from "../../../contexts/auth";
 
-export default function RegistrationForm() {
-  const [errors, setErrors] = React.useState({});
+export default function RegistrationForm({ loggedIn, setLoggedIn }) {
+  // const [errors, setErrors] = React.useState({});
+  const { error, setError, signupUser, refresh, setRefresh } = useAuthContext();
   const [form, setForm] = React.useState({
     email: "",
     username: "",
@@ -15,39 +17,87 @@ export default function RegistrationForm() {
   const handleOnInputChange = (event) => {
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
-        setErrors((e) => ({
+        setError((e) => ({
           ...e,
           passwordConfirm: "passwords don't match",
         }));
       } else {
-        setErrors((e) => ({ ...e, passwordConfirm: null }));
+        setError((e) => ({ ...e, passwordConfirm: null }));
       }
     }
     if (event.target.name === "passwordConfirm") {
       if (form.password && form.password !== event.target.value) {
-        setErrors((e) => ({
+        setError((e) => ({
           ...e,
           passwordConfirm: "passwords don't match",
         }));
       } else {
-        setErrors((e) => ({ ...e, passwordConfirm: null }));
+        setError((e) => ({ ...e, passwordConfirm: null }));
       }
     }
     if (event.target.name === "email") {
       if (event.target.value.indexOf("@") === -1) {
-        setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
+        setError((e) => ({ ...e, email: "Please enter a valid email." }));
       } else {
-        setErrors((e) => ({ ...e, email: null }));
+        setError((e) => ({ ...e, email: null }));
       }
     }
 
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
   };
 
+  const handleOnSubmit = async () => {
+    if (form.email.indexOf("@") <= 0) {
+      console.log("email is invalid");
+      setError((e) => ({
+        ...e,
+        form: "email is invalid",
+      }));
+      return;
+    }
+    if (form.password !== form.passwordConfirm) {
+      console.log("passwords do not match");
+      setError((e) => ({
+        ...e,
+        form: "passwords do not match",
+      }));
+      return;
+    }
+    try {
+      const res = await signupUser({
+        email: form.email,
+        username: form.username,
+        first_name: form.firstName,
+        last_name: form.lastName,
+        password: form.password,
+      });
+      console.log("suRes", res);
+      if (res?.user) {
+        console.log("there is user registered", res.user);
+      } else {
+        console.log("overhere");
+        setError((e) => ({
+          ...e,
+          form: "Something went wrong with registration",
+        }));
+        return;
+      }
+      setRefresh(!refresh);
+      setLoggedIn(true);
+    } catch (err) {
+      console.log(err);
+      const message = err?.response?.data?.error?.message;
+      setError((e) => ({ ...e, form: message ?? String(err) }));
+      setRefresh(!refresh);
+      setLoggedIn(false);
+    }
+  };
+
   return (
     <div className="registration-form">
       <div className="reg-card">
         <h2 className="reg-title">Register</h2>
+        {error.form && <span className="error">{error.form}</span>}
         <div className="l-form">
           <div className="input-field">
             <label className="form-label" htmlFor="email">
@@ -61,7 +111,7 @@ export default function RegistrationForm() {
               placeholder="user@gmail.com"
               value={form.email}
             />
-            {errors.email && <span className="error">{errors.email}</span>}
+            {error.email && <span className="error">{error.email}</span>}
           </div>
 
           <div className="input-field">
@@ -76,9 +126,7 @@ export default function RegistrationForm() {
               placeholder="your_username"
               value={form.username}
             />
-            {errors.username && (
-              <span className="error">{errors.username}</span>
-            )}
+            {error.username && <span className="error">{error.username}</span>}
           </div>
 
           <div className="split-inputs">
@@ -94,8 +142,8 @@ export default function RegistrationForm() {
                 value={form.firstName}
                 onChange={handleOnInputChange}
               />
-              {errors.firstName && (
-                <span className="error">{errors.firstName}</span>
+              {error.firstName && (
+                <span className="error">{error.firstName}</span>
               )}
             </div>
             <div className="input-field">
@@ -110,8 +158,8 @@ export default function RegistrationForm() {
                 value={form.lastName}
                 onChange={handleOnInputChange}
               />
-              {errors.lastName && (
-                <span className="error">{errors.lastName}</span>
+              {error.lastName && (
+                <span className="error">{error.lastName}</span>
               )}
             </div>
           </div>
@@ -128,9 +176,7 @@ export default function RegistrationForm() {
               placeholder="Enter a secure password"
               value={form.password}
             />
-            {errors.password && (
-              <span className="error">{errors.password}</span>
-            )}
+            {error.password && <span className="error">{error.password}</span>}
           </div>
           <div className="input-field">
             <label className="form-label" htmlFor="passwordConfirm">
@@ -144,11 +190,11 @@ export default function RegistrationForm() {
               placeholder="Confirm your password"
               value={form.passwordConfirm}
             />
-            {errors.passwordConfirm && (
-              <span className="error">{errors.passwordConfirm}</span>
+            {error.passwordConfirm && (
+              <span className="error">{error.passwordConfirm}</span>
             )}
           </div>
-          <button className="submit-registration" onClick={() => {}}>
+          <button className="submit-registration" onClick={handleOnSubmit}>
             Create Account
           </button>
         </div>

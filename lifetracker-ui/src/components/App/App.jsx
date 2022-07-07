@@ -9,7 +9,17 @@ import ActivityPage from "components/ActivityPage/ActivityPage";
 import NutritionPage from "components/NutritionPage/NutritionPage";
 import NotFound from "components/NotFound/NotFound";
 
-export default function App() {
+import { AuthContextProvider, useAuthContext } from "../../../contexts/auth";
+
+export default function AppContainer() {
+  return (
+    <AuthContextProvider>
+      {" "}
+      <App />
+    </AuthContextProvider>
+  );
+}
+function App() {
   return (
     <div className="app">
       <React.Fragment>
