@@ -49,6 +49,7 @@ export default function NutritionForm() {
     }
 
     try {
+      console.log("before postNutrition----------");
       const nutrition = await postNutrition(form);
       console.log("nutrition returned from postNutrition:", nutrition);
       setRefresh(!refresh);

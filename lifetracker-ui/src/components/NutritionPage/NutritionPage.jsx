@@ -17,7 +17,7 @@ export default function NutritionPage() {
   //   if (!user) {
   //     navigate("/login");
   //   }
-  // }, []);
+  // }, [user]);
 
   React.useEffect(() => {
     setRefresh(!refresh);
