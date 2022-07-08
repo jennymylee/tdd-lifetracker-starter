@@ -8,12 +8,12 @@ export default function ProtectedRoute({ children }) {
   const { initialized, user } = useAuthContext();
   const navigate = useNavigate();
   React.useEffect(() => {
-    if (!initialized) {
-      navigate("/login");
-    }
-    if (!user) {
-      navigate("/login");
-    }
+    // if (!initialized) {
+    //   navigate("/login");
+    // }
+    // if (!user) {
+    //   navigate("/login");
+    // }
   }, [initialized, user]);
 
   return children;

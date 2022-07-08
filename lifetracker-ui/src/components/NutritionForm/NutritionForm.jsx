@@ -1,8 +1,12 @@
 import * as React from "react";
 import "./NutritionForm.css";
+import { useAuthContext } from "../../../contexts/auth";
+import { useNutritionContext } from "../../../contexts/nutrition";
+import { useNavigate } from "react-router-dom";
 
 export default function NutritionForm() {
-  const [errors, setErrors] = React.useState({});
+  // const [errors, setErrors] = React.useState({});
+  const [goToNutrition, setGoToNutrition] = React.useState(false);
   const [form, setForm] = React.useState({
     name: "",
     calories: 1,
@@ -11,18 +15,48 @@ export default function NutritionForm() {
     quantity: 1,
   });
 
-  const handleOnSubmit = () => {};
+  const { user } = useAuthContext();
+  const { error, setError, postNutrition, refresh, setRefresh } =
+    useNutritionContext();
+  const navigate = useNavigate();
+  // React.useEffect(() => {
+  //   navigate("/nutrition/");
+  // }, [goToNutrition]);
 
   const handleOnInputChange = (event) => {
     if (event.target.value === "") {
-      setErrors((e) => ({
+      setError((e) => ({
         ...e,
         [event.target.name]: `Please enter a valid ${event.target.name}.`,
       }));
     } else {
-      setErrors((e) => ({ ...e, [event.target.name]: null }));
+      setError((e) => ({ ...e, [event.target.name]: null }));
     }
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
+  };
+
+  const handleOnSubmit = async () => {
+    if (form.name == "") {
+      setError((e) => ({ ...e, name: "Please enter a valid name." }));
+    } else if (form.category == "") {
+      setError((e) => ({ ...e, category: "Please enter a valid category." }));
+    } else if (form.imageUrl == "") {
+      setError((e) => ({ ...e, imageUrl: "Please enter a valid category." }));
+    } else {
+      setError((e) => ({ ...e, name: null }));
+      setError((e) => ({ ...e, category: null }));
+      setError((e) => ({ ...e, imageUrl: null }));
+    }
+
+    try {
+      const nutrition = await postNutrition(form);
+      console.log("nutrition returned from postNutrition:", nutrition);
+      setRefresh(!refresh);
+      // setGoToNutrition(!goToNutrition);
+      navigate("/nutrition");
+    } catch (err) {
+      setError(err.message);
+    }
   };
   return (
     <div className="nutrition-form">
@@ -41,7 +75,7 @@ export default function NutritionForm() {
               placeholder="Nutrition name"
               value={form.name}
             />
-            {errors.name && <span className="error">{errors.name}</span>}
+            {error && error.name && <span className="error">{error.name}</span>}
           </div>
           <div className="input-field">
             <label className="form-label" htmlFor="category">
@@ -55,9 +89,7 @@ export default function NutritionForm() {
               placeholder="Category"
               value={form.category}
             />
-            {errors.category && (
-              <span className="error">{errors.category}</span>
-            )}
+            {error.category && <span className="error">{error.category}</span>}
           </div>
           <div className="split-inputs">
             <div className="input-field">
@@ -72,8 +104,8 @@ export default function NutritionForm() {
                 value={form.quantity}
                 onChange={handleOnInputChange}
               />
-              {errors.quantity && (
-                <span className="error">{errors.quantity}</span>
+              {error.quantity && (
+                <span className="error">{error.quantity}</span>
               )}
             </div>
             <div className="input-field">
@@ -88,8 +120,8 @@ export default function NutritionForm() {
                 value={form.calories}
                 onChange={handleOnInputChange}
               />
-              {errors.calories && (
-                <span className="error">{errors.calories}</span>
+              {error.calories && (
+                <span className="error">{error.calories}</span>
               )}
             </div>
           </div>
@@ -105,11 +137,9 @@ export default function NutritionForm() {
               value={form.imageUrl}
               onChange={handleOnInputChange}
             />
-            {errors.imageUrl && (
-              <span className="error">{errors.imageUrl}</span>
-            )}
+            {error.imageUrl && <span className="error">{error.imageUrl}</span>}
           </div>
-          <button className="submit-nutrition" onClick={handleOnSubmit()}>
+          <button className="submit-nutrition" onClick={handleOnSubmit}>
             Save
           </button>
         </div>

@@ -11,12 +11,19 @@ import NotFound from "components/NotFound/NotFound";
 import ProtectedRoute from "components/ProtectedRoute/ProtectedRoute";
 
 import { AuthContextProvider, useAuthContext } from "../../../contexts/auth";
-
+import {
+  NutritionContextProvider,
+  useNutritionContext,
+} from "../../../contexts/nutrition";
+import { ActivityContextProvider } from "../../../contexts/activity";
 export default function AppContainer() {
   return (
     <AuthContextProvider>
-      {" "}
-      <App />
+      <NutritionContextProvider>
+        <ActivityContextProvider>
+          <App />
+        </ActivityContextProvider>
+      </NutritionContextProvider>
     </AuthContextProvider>
   );
 }

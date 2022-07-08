@@ -1,8 +1,9 @@
 import * as React from "react";
 import ApiClient from "../services/apiClient";
+import { useNavigate } from "react-router-dom";
 
 const API_BASE_URL = "http://localhost:3001";
-const AuthContext = React.createContext();
+const AuthContext = React.createContext(null);
 
 export const AuthContextProvider = ({ children }) => {
   const [refresh, setRefresh] = React.useState(false);
@@ -48,7 +49,7 @@ export const AuthContextProvider = ({ children }) => {
     return await apiClient.signup(user);
   };
 
-  const fetchUserFromToken = async (user) => {
+  const fetchUserFromToken = async () => {
     return await apiClient.fetchUserFromToken();
   };
 
@@ -60,6 +61,7 @@ export const AuthContextProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        apiClient,
         refresh,
         setRefresh,
         user,
@@ -76,11 +78,9 @@ export const AuthContextProvider = ({ children }) => {
         logoutUser,
       }}
     >
-      {children}
+      <>{children}</>
     </AuthContext.Provider>
   );
 };
 
-export const useAuthContext = () => {
-  return React.useContext(AuthContext);
-};
+export const useAuthContext = () => React.useContext(AuthContext);

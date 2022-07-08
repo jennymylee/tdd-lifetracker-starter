@@ -1,9 +1,11 @@
 import * as React from "react";
 import "./RegistrationForm.css";
 import { useAuthContext } from "../../../contexts/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function RegistrationForm({ loggedIn, setLoggedIn }) {
   // const [errors, setErrors] = React.useState({});
+  const navigate = useNavigate();
   const {
     error,
     setError,
@@ -85,6 +87,7 @@ export default function RegistrationForm({ loggedIn, setLoggedIn }) {
       if (res?.user) {
         console.log("there is user registered", res.user);
         // setUser(res.user);
+        navigate("/activity");
       } else {
         console.log("overhere");
         setError((e) => ({
@@ -93,7 +96,7 @@ export default function RegistrationForm({ loggedIn, setLoggedIn }) {
         }));
         return;
       }
-      setRefresh(true);
+      setRefresh(!refresh);
       setLoggedIn(true);
       setInitialized(true);
     } catch (err) {

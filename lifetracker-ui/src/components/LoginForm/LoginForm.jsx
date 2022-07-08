@@ -3,7 +3,22 @@ import "./LoginForm.css";
 import { useAuthContext } from "../../../contexts/auth";
 import { useNavigate } from "react-router-dom";
 
-export default function LoginForm({ loggedIn, setLoggedIn }) {
+export default function LoginForm() {
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const navigate = useNavigate();
+  const isMounted = React.useRef(true);
+  React.useEffect(
+    () => () => {
+      isMounted.current = false;
+    },
+    []
+  );
+  React.useEffect(() => {
+    if (isMounted && loggedIn) {
+      console.log("trying to go to activity");
+      navigate("/activity");
+    }
+  }, [loggedIn]);
   const {
     error,
     setError,
@@ -15,12 +30,21 @@ export default function LoginForm({ loggedIn, setLoggedIn }) {
     initialized,
     setInitialized,
   } = useAuthContext();
-  const navigate = useNavigate();
+
   // const [errors, setErrors] = React.useState({});
+  const [goToActivity, setGoToActivity] = React.useState(false);
   const [form, setForm] = React.useState({
     email: "",
     password: "",
   });
+
+  React.useEffect(() => {
+    console.log("gotoactivity changed");
+    console.log("gotoactivity & user", goToActivity, user);
+    if (!goToActivity && user) {
+      navigate("/activity");
+    }
+  }, [goToActivity, user]);
 
   const handleOnInputChange = (event) => {
     if (event.target.name === "email") {
@@ -46,6 +70,8 @@ export default function LoginForm({ loggedIn, setLoggedIn }) {
       console.log("liRes", liRes);
       if (liRes?.user) {
         console.log("there is user logged in", liRes.user);
+        setGoToActivity(true);
+        navigate("/activity");
         // setUser(liRes.user);
       } else {
         console.log("overhere");
@@ -56,7 +82,7 @@ export default function LoginForm({ loggedIn, setLoggedIn }) {
         return;
       }
       setRefresh(true);
-      setLoggedIn(true);
+      // setLoggedIn(true);
       setInitialized(true);
 
       // navigate("/activity");

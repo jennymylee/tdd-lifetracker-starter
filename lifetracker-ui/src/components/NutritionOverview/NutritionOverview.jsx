@@ -3,8 +3,10 @@ import "./NutritionOverview.css";
 import Loading from "components/Loading/Loading";
 import { Link } from "react-router-dom";
 import NutritionFeed from "components/NutritionFeed/NutritionFeed";
+import { useNutritionContext } from "../../../contexts/nutrition";
 
-export default function NutritionOverview({ isLoading = false }) {
+export default function NutritionOverview() {
+  const { isLoading } = useNutritionContext();
   return (
     <div className="nutrition-overview">
       <div className="no-content">

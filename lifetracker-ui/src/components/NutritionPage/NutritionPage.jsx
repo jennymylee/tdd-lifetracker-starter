@@ -5,8 +5,23 @@ import NutritionOverview from "components/NutritionOverview/NutritionOverview";
 import NutritionNew from "components/NutritionNew/NutritionNew";
 import NutritionDetail from "components/NutritionDetail/NutritionDetail";
 import NotFound from "components/NotFound/NotFound";
+import { useNutritionContext } from "../../../contexts/nutrition";
+import { useAuthContext } from "../../../contexts/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function NutritionPage() {
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
+  const { setRefresh, refresh } = useNutritionContext();
+  React.useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, []);
+
+  React.useEffect(() => {
+    setRefresh(!refresh);
+  }, []);
   return (
     <div className="nutrition-page">
       <div className="nutrition-title">

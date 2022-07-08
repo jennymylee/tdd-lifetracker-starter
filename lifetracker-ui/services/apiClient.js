@@ -18,7 +18,7 @@ export default class ApiClient {
         const headers = {
           "Content-Type": "application/json",
         };
-        const result = await axios.post(url, data, { headers });
+        const result = await axios.post(url, data, headers);
         window.localStorage.removeItem("lifetracker_token");
         console.log("auth/login res", result);
         window.localStorage.setItem("lifetracker_token", result.data.token);
@@ -33,7 +33,9 @@ export default class ApiClient {
         const headers = {
           "Content-Type": "application/json",
         };
-        const result = await axios.post(url, data, { headers });
+        console.log("this is the data", data);
+        const result = await axios.post(url, data, headers);
+        console.log("result from reg post", result.data);
         this.login({ email: data.email, password: data.password });
         return result.data;
       } catch (err) {
@@ -44,32 +46,71 @@ export default class ApiClient {
       try {
         const headers = {
           "Content-Type": "application/json",
-          Authentication: `Bearer ${data}`,
+          Authorization: `Bearer ${data}`,
+        };
+        // console.log("data--------", data);
+
+        const result = await axios.get(url, { headers });
+        return result.data;
+      } catch (err) {
+        return err;
+      }
+    } else if (endpoint == "nutrition" && method == "GET") {
+      try {
+        const headers = {
+          "Content-Type": "application/json",
+          Authentication: `Bearer ${this.token}`,
+          user_id: data,
+        };
+        console.log("data from get nutrition:", data);
+
+        const result = await axios.get(url, { headers });
+        return result.data;
+      } catch (err) {
+        return err;
+      }
+    } else if (endpoint == "nutrition/:nutritionId") {
+      try {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.token}`,
+        };
+        const result = await axios.get(
+          `http://localhost:3001/nutrition/${data}`,
+          { headers }
+        );
+        return result.data;
+      } catch (err) {
+        return err;
+      }
+    } else if (endpoint == "nutrition" && method == "POST") {
+      try {
+        const headers = {
+          "Content-Type": "application/json",
+          Authentication: `Bearer ${this.token}`,
         };
 
-        const result = await axios.get(url, headers);
+        const result = await axios.post(url, data, { headers });
+        return result.data;
+      } catch (err) {
+        return err;
+      }
+    } else if (endpoint == "activity") {
+      try {
+        const headers = {
+          "Content-Type": "application/json",
+          Authentication: `Bearer ${this.token}`,
+          user_id: data,
+        };
+        console.log("data from get activity:", data);
+
+        const result = await axios.get(url, { headers });
+        console.log("get activity RES:", result);
         return result.data;
       } catch (err) {
         return err;
       }
     }
-
-    // const headers = {
-    //   "Content-Type": "application/json",
-    // };
-
-    // if (this.token) {
-    //   headers["Authorization"] = `Bearer ${this.token}`;
-    // }
-
-    // try {
-    //   const res = await axios({ url, method, data, headers });
-    //   return { data: res.data, error: null };
-    // } catch (err) {
-    //   console.error({ errorResponse: error.response });
-    //   const message = error?.response?.data?.error?.message;
-    //   return { data: null, error: message || String(error) };
-    // }
   }
 
   async login(credentials) {
@@ -94,6 +135,46 @@ export default class ApiClient {
       endpoint: "auth/me",
       method: "GET",
       data: this.token,
+    });
+  }
+
+  async getNutritionsFromUser(userId) {
+    console.log("userId in getNutritionsFromUser in apiClient:", userId);
+    return await this.request({
+      endpoint: "nutrition",
+      method: "GET",
+      data: userId,
+    });
+  }
+
+  async getNutritionById(nutritionId) {
+    return await this.request({
+      endpoint: "nutrition/:nutritionId",
+      method: "GET",
+      data: nutritionId,
+    });
+  }
+
+  async postNutrition(item, userId) {
+    return await this.request({
+      endpoint: "nutrition",
+      method: "POST",
+      data: {
+        user_id: userId,
+        name: item.name,
+        category: item.category,
+        calories: item.calories,
+        quantity: item.quantity,
+        image_url: item.imageUrl,
+      },
+    });
+  }
+
+  async getActivityFromUser(userId) {
+    return await this.request({
+      endpoint: "activity",
+      method: "GET",
+      data: userId,
     });
   }
 }
