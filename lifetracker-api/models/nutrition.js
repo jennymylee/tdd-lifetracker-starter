@@ -1,4 +1,4 @@
-const db = require("db");
+const db = require("../db");
 const { BadRequestError, NotFoundError } = require("../utils/errors");
 
 class Nutrition {
@@ -14,7 +14,7 @@ class Nutrition {
     //Should throw a BadRequestError (400 status code) or
     // UnprocessableEntityError (422 status code) when any of those
     // values are not supplied.
-    if (nutrition) {
+    if (!nutrition) {
       throw new BadRequestError("nutrition is null");
     }
     const requiredFields = [
@@ -25,7 +25,7 @@ class Nutrition {
       "user_id",
     ];
     requiredFields.forEach((property) => {
-      if (!credentials.hasOwnProperty(property)) {
+      if (!nutrition.hasOwnProperty(property)) {
         throw new BadRequestError(`Missing ${property} in request body.`);
       }
     });
@@ -45,7 +45,7 @@ class Nutrition {
         nutrition.user_id,
       ]
     );
-    return res.rows[0];
+    return res.rows;
   }
 
   static async fetchNutritionById(nutritionId) {
@@ -69,7 +69,7 @@ class Nutrition {
     if (!userId) {
       throw new BadRequestError("userId is null");
     }
-    const res = await db.query(`SELECT * FROM nutrition WHERE id=$1;`, [
+    const res = await db.query(`SELECT * FROM nutrition WHERE user_id=$1;`, [
       userId,
     ]);
     return res.rows;

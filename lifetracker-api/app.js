@@ -3,6 +3,9 @@ const morgan = require("morgan");
 const cors = require("cors");
 const security = require("./middleware/security");
 const { NotFoundError } = require("./utils/errors");
+const authRoutes = require("./routes/auth");
+const nutritionRoutes = require("./routes/nutrition");
+const activityRoutes = require("./routes/activity");
 
 const app = express();
 
@@ -20,9 +23,9 @@ app.use(express.json());
 app.use(cors());
 app.use(security.extractUserFromJwt);
 
-const authRoute = require("./routes/auth");
-
-app.use("/auth", authRoute);
+app.use("/auth", authRoutes);
+app.use("/nutrition", nutritionRoutes);
+app.use("/activity", activityRoutes);
 
 app.get("/", async (req, res, next) => {
   res.status(200).json({ ping: "pong" });

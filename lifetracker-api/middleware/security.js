@@ -38,6 +38,7 @@ const requireAuthenticatedUser = (req, res, next) => {
     // if (token) {
     //   res.locals.user = jwt.verify(token, SECRET_KEY);
     // }
+    console.log("req.headers.authorization", req.headers.authorization);
     const { user } = res.locals;
     // res.locals.user =
     console.log("res.locals user", user);
