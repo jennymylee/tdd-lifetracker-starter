@@ -2,8 +2,6 @@ import * as React from "react";
 import ApiClient from "../services/apiClient";
 import { useAuthContext } from "./auth";
 
-const API_BASE_URL = "http://localhost:3001";
-
 const NutritionContext = React.createContext(null);
 
 export const NutritionContextProvider = ({ children }) => {

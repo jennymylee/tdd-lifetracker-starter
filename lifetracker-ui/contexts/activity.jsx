@@ -3,8 +3,6 @@ import ApiClient from "../services/apiClient";
 import { useAuthContext } from "./auth";
 import { useNutritionContext } from "./nutrition";
 
-const API_BASE_URL = "http://localhost:3001";
-
 const ActivityContext = React.createContext(null);
 
 export const ActivityContextProvider = ({ children }) => {

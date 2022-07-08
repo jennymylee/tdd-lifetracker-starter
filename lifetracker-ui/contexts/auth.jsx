@@ -1,8 +1,8 @@
 import * as React from "react";
 import ApiClient from "../services/apiClient";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../constants";
 
-const API_BASE_URL = "http://localhost:3001";
 const AuthContext = React.createContext(null);
 
 export const AuthContextProvider = ({ children }) => {
@@ -55,7 +55,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const logoutUser = async (user) => {
     window.localStorage.removeItem("lifetracker_token");
-    location.replace("http://localhost:3000");
+    setUser(null);
   };
 
   return (

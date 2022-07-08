@@ -1,4 +1,5 @@
 import axios from "axios";
+import API_BASE_URL from "../constants";
 
 export default class ApiClient {
   constructor(remoteHostUrl) {
@@ -75,10 +76,9 @@ export default class ApiClient {
           "Content-Type": "application/json",
           Authorization: `Bearer ${this.token}`,
         };
-        const result = await axios.get(
-          `http://localhost:3001/nutrition/${data}`,
-          { headers }
-        );
+        const result = await axios.get(`${API_BASE_URL}/nutrition/${data}`, {
+          headers,
+        });
         return result.data;
       } catch (err) {
         return err;
