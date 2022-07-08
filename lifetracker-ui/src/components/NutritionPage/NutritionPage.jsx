@@ -13,11 +13,11 @@ export default function NutritionPage() {
   const { user } = useAuthContext();
   const navigate = useNavigate();
   const { setRefresh, refresh } = useNutritionContext();
-  React.useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   if (!user) {
+  //     navigate("/login");
+  //   }
+  // }, []);
 
   React.useEffect(() => {
     setRefresh(!refresh);

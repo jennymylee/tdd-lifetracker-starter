@@ -110,14 +110,18 @@ export default function ActivityFeed() {
               {avgCaloriesPerCategory ? (
                 renderAverageCaloriesPerCategory()
               ) : (
-                <NotFound />
+                <p>Nothing here yet...</p>
               )}
             </div>
           </div>
           <div className="per-day">
             <h4 className="acpc-title">Total Calories Per Day</h4>
             <div className="cards">
-              {totalCaloriesPerDay && renderTotalCaloriesPerDay()}
+              {totalCaloriesPerDay ? (
+                renderTotalCaloriesPerDay()
+              ) : (
+                <p>Nothing here yet...</p>
+              )}
             </div>
           </div>
         </div>

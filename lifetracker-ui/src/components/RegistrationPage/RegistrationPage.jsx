@@ -1,20 +1,27 @@
 import * as React from "react";
 import "./RegistrationPage.css";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../../contexts/auth";
 import RegistrationForm from "components/RegistrationForm/RegistrationForm";
 
 export default function RegistrationPage() {
   const navigate = useNavigate();
+  const { user } = useAuthContext();
   const [loggedIn, setLoggedIn] = React.useState(false);
-
   React.useEffect(() => {
-    if (loggedIn) {
+    if (user) {
       navigate("/activity");
     }
-  }, [loggedIn]);
+  }, []);
+
+  // React.useEffect(() => {
+  //   if (loggedIn) {
+  //     navigate("/activity");
+  //   }
+  // }, [loggedIn]);
   return (
     <div className="registration-page">
-      <RegistrationForm loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <RegistrationForm />
     </div>
   );
 }

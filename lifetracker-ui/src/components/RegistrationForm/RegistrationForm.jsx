@@ -25,7 +25,14 @@ export default function RegistrationForm({ loggedIn, setLoggedIn }) {
     password: "",
     passwordConfirm: "",
   });
-
+  const [goToActivity, setGoToActivity] = React.useState(false);
+  React.useEffect(() => {
+    console.log("gotoactivity changed");
+    console.log("gotoactivity & user", goToActivity, user);
+    if (!goToActivity && user) {
+      navigate("/activity");
+    }
+  }, [goToActivity, user]);
   const handleOnInputChange = (event) => {
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
@@ -86,7 +93,8 @@ export default function RegistrationForm({ loggedIn, setLoggedIn }) {
       console.log("suRes", res);
       if (res?.user) {
         console.log("there is user registered", res.user);
-        // setUser(res.user);
+        setUser(res.user);
+        setGoToActivity(true);
         navigate("/activity");
       } else {
         console.log("overhere");
@@ -97,14 +105,14 @@ export default function RegistrationForm({ loggedIn, setLoggedIn }) {
         return;
       }
       setRefresh(!refresh);
-      setLoggedIn(true);
+      // setLoggedIn(true);
       setInitialized(true);
     } catch (err) {
       console.log(err);
       const message = err?.response?.data?.error?.message;
       setError((e) => ({ ...e, form: message ?? String(err) }));
       setRefresh(!refresh);
-      setLoggedIn(false);
+      // setLoggedIn(false);
     }
   };
 
