@@ -2,7 +2,7 @@
 
 Submitted by: Jenny Lee
 
-Deployed Application: [Lifetracker Deployed Site](ADD_LINK_HERE)
+Deployed Application: [Lifetracker Deployed Site](http://lifetracker-jenny-lee.surge.sh/)
 
 ## Application Features
 
